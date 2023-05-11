@@ -1,8 +1,7 @@
 <template>
   <div>
-    <MyItem/>
-    <MyItem/>
-    <MyItem/>
+    <MyItem :deleteToDoFromList="deleteToDoFromList" :changeCompleted="changeCompleted" v-for="todo in todoList" :todo="todo"/>
+
   </div>
 </template>
 
@@ -12,7 +11,8 @@ export default {
     name: "MyList",
     components:{
         MyItem
-    }
+    },
+    props:['todoList','changeCompleted','deleteToDoFromList']
 }
 </script>
 
