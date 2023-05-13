@@ -6,10 +6,9 @@
 </template>
 
 <script>
-import { set } from 'vue'
 export default {
     name: "MyFooter",
-    props:['todoList','todoListCheckedAll','clearAlCompleted'],
+    props:['todoList'],
     computed:{
         todoLength(){
             return this.todoList.length
@@ -26,13 +25,14 @@ export default {
                 return this.completedNumbers === this.todoLength && this.todoLength > 0
             },
             set(value){
-                this.todoListCheckedAll(value)
+                // 子组件中触发父组件的自定义事件，并传数据
+                this.$emit('todoListCheckedAll',value)
             }
         }
     },
     methods:{
         clearList(){
-            this.clearAlCompleted()
+            this.$emit('clearAlCompleted')
         }
     }
 
